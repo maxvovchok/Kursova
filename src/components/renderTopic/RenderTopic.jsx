@@ -7,9 +7,6 @@ export const RenderTopic = () => {
   const isAdminPage = location.pathname.startsWith('/administrator');
   const isUserPage = location.pathname.startsWith('/user');
 
-  const topics = localStorage.getItem('topics');
-  const parsedTopics = JSON.parse(topics);
-
   return (
     <div>
       {allTopic.length > 0 ? (

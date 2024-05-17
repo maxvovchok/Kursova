@@ -31,7 +31,6 @@ export const AddTopic = () => {
       };
 
       dispatch(addTopic(newTopic));
-      localStorage.setItem('topics', JSON.stringify(newTopic));
       Notiflix.Notify.success('Topic was successfully added');
 
       setAddNameTopic('');
