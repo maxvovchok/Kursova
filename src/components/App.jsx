@@ -6,7 +6,6 @@ import { User } from 'page/User';
 import { Guest } from 'page/Guest';
 import { AddTopic } from './administratorMenu/AddTopic';
 import { TopicDetails } from 'page/TopicDetails';
-import { RenderTopicDetails } from './renderTopicDetails/RenderTopicDetails';
 import { TopicDetailsGuest } from 'page/TopicDetailsGuest';
 
 export const App = () => {
