@@ -12,21 +12,15 @@ export const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/kursova" element={<Homep />} />
-        <Route path="/kursova/administrator" element={<Administrator />} />
-        <Route path="/kursova/administrator/addtopic" element={<AddTopic />} />
-        <Route
-          path="/kursova/administrator/topic/:Id"
-          element={<TopicDetails />}
-        />
+        <Route path="/" element={<Homep />} />
+        <Route path="/administrator" element={<Administrator />} />
+        <Route path="/administrator/addtopic" element={<AddTopic />} />
+        <Route path="/administrator/topic/:Id" element={<TopicDetails />} />
 
-        <Route path="/kursova/user" element={<User />} />
-        <Route path="/kursova/user/topic/:Id" element={<TopicDetails />} />
-        <Route path="/kursova/guest" element={<Guest />} />
-        <Route
-          path="/kursova/guest/topic/:Id"
-          element={<RenderTopicDetails />}
-        />
+        <Route path="/user" element={<User />} />
+        <Route path="/user/topic/:Id" element={<TopicDetails />} />
+        <Route path="/guest" element={<Guest />} />
+        <Route path="/guest/topic/:Id" element={<RenderTopicDetails />} />
       </Routes>
     </div>
   );
