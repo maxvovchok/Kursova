@@ -2,6 +2,7 @@ import { Header } from 'components/header/Header';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Notiflix from 'notiflix';
+import { nanoid } from 'nanoid';
 
 import { addTopic } from '../../redux/store/store';
 
@@ -23,11 +24,14 @@ export const AddTopic = () => {
       Notiflix.Notify.failure('Topic already exists');
     } else {
       const newTopic = {
+        id: nanoid(),
         nameTopic: addNameTopic,
         descriptionTopic,
+        post: [],
       };
 
       dispatch(addTopic(newTopic));
+      localStorage.setItem('topics', JSON.stringify(newTopic));
       Notiflix.Notify.success('Topic was successfully added');
 
       setAddNameTopic('');
