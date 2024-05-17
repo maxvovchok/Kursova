@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/kursova/static/css/main.7acaea2f.css",
-    "main.js": "/kursova/static/js/main.17005c35.js",
+    "main.js": "/kursova/static/js/main.9e9b884c.js",
     "index.html": "/kursova/index.html",
     "main.7acaea2f.css.map": "/kursova/static/css/main.7acaea2f.css.map",
-    "main.17005c35.js.map": "/kursova/static/js/main.17005c35.js.map"
+    "main.9e9b884c.js.map": "/kursova/static/js/main.9e9b884c.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.17005c35.js"
+    "static/js/main.9e9b884c.js"
   ]
 }
