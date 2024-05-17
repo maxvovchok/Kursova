@@ -7,6 +7,7 @@ import { Guest } from 'page/Guest';
 import { AddTopic } from './administratorMenu/AddTopic';
 import { TopicDetails } from 'page/TopicDetails';
 import { RenderTopicDetails } from './renderTopicDetails/RenderTopicDetails';
+import { TopicDetailsGuest } from 'page/TopicDetailsGuest';
 
 export const App = () => {
   return (
@@ -20,7 +21,7 @@ export const App = () => {
         <Route path="/user" element={<User />} />
         <Route path="/user/topic/:Id" element={<TopicDetails />} />
         <Route path="/guest" element={<Guest />} />
-        <Route path="/guest/topic/:Id" element={<RenderTopicDetails />} />
+        <Route path="/guest/topic/:Id" element={<TopicDetailsGuest />} />
       </Routes>
     </div>
   );
