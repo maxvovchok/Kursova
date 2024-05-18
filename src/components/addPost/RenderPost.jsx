@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import style from './RenderPost.module.css';
 
 export const RenderPost = () => {
   const { Id } = useParams();
@@ -12,7 +13,9 @@ export const RenderPost = () => {
       <ul>
         {topic && topic.post.length >= 1
           ? topic.post.map(({ content }, index) => (
-              <li key={index}>{content}</li>
+              <li key={index} className={style.postItem}>
+                {content}
+              </li>
             ))
           : null}
       </ul>
