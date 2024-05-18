@@ -5,6 +5,7 @@ import Notiflix from 'notiflix';
 import { nanoid } from 'nanoid';
 
 import { addTopic } from '../../redux/store/store';
+import style from '../../page/page.module.css';
 
 export const AddTopic = () => {
   const [addNameTopic, setAddNameTopic] = useState('');
@@ -56,8 +57,9 @@ export const AddTopic = () => {
   };
 
   return (
-    <div>
+    <div className={style.conteiner}>
       <Header />
+      <button style={{ margin: '20px 0px' }}>Повернутись</button>
       <form onSubmit={handleSubmit}>
         <label htmlFor="">
           назва теми

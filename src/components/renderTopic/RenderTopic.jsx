@@ -8,7 +8,8 @@ export const RenderTopic = () => {
   const isUserPage = location.pathname.startsWith('/user');
 
   return (
-    <div>
+    <div style={{ marginRight: '50px' }}>
+      <p>Всі теми</p>
       {allTopic.length > 0 ? (
         <ul>
           {allTopic.map(({ id, nameTopic, descriptionTopic }, index) => (
@@ -22,9 +23,13 @@ export const RenderTopic = () => {
               }
               key={index}
             >
-              <li key={index}>
+              <li
+                key={index}
+                style={{ border: 'solid 1px black', marginBottom: '10px' }}
+              >
                 <h1>{nameTopic}</h1>
                 <p>{descriptionTopic}</p>
+                <h4>Категорія</h4>
               </li>
             </Link>
           ))}

@@ -8,6 +8,7 @@ export const RenderPost = () => {
 
   return (
     <div>
+      <p style={({ marginBottom: '30px' }, { marginTop: '50px' })}>Всі пости</p>
       <ul>
         {topic && topic.post.length >= 1
           ? topic.post.map(({ content }, index) => (

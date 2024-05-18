@@ -1,0 +1,8 @@
+.conteiner {
+  margin: 20px 80px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+}
