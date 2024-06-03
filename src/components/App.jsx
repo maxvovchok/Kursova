@@ -1,25 +1,24 @@
 import { Route, Routes } from 'react-router-dom';
-
-import { Homep } from 'page/Home';
-import { Administrator } from 'page/Administrator';
-import { User } from 'page/User';
-import { Guest } from 'page/Guest';
-import { AddTopic } from './administratorMenu/AddTopic';
+import { Home } from 'page/Home';
+import { ForumTopics } from 'page/ForumTopics';
+import { AddTopics } from '../page/AddTopics';
 import { TopicDetails } from 'page/TopicDetails';
 import { TopicDetailsGuest } from 'page/TopicDetailsGuest';
+import { LogInPage } from 'page/LogInPage';
 
 export const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Homep />} />
-        <Route path="/administrator" element={<Administrator />} />
-        <Route path="/administrator/addtopic" element={<AddTopic />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/administrator" element={<ForumTopics />} />
+        <Route path="/administrator/addtopic" element={<AddTopics />} />
         <Route path="/administrator/topic/:Id" element={<TopicDetails />} />
+        <Route path="/login" element={<LogInPage />} />
 
-        <Route path="/user" element={<User />} />
+        <Route path="/user" element={<ForumTopics />} />
         <Route path="/user/topic/:Id" element={<TopicDetails />} />
-        <Route path="/guest" element={<Guest />} />
+        <Route path="/guest" element={<ForumTopics />} />
         <Route path="/guest/topic/:Id" element={<TopicDetailsGuest />} />
       </Routes>
     </div>

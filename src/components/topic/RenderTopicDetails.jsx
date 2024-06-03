@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { Typography, Box } from '@mui/material';
 
 export const RenderTopicDetails = () => {
   const [renderName, setRenderName] = useState('');
@@ -20,9 +21,11 @@ export const RenderTopicDetails = () => {
   }, [params.Id, allTopic]);
 
   return (
-    <div>
-      <h1>{renderName}</h1>
-      <p>{renderDescriptionTopic}</p>
-    </div>
+    <Box p={2}>
+      <Typography variant="h4" sx={{ marginBottom: '16px' }}>
+        {renderName}
+      </Typography>
+      <Typography>{renderDescriptionTopic}</Typography>
+    </Box>
   );
 };

@@ -1,9 +1,12 @@
 {
-  "name": "kursova",
+  "name": "forum",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://maxvovchok.github.io/kursova/",
+  "homepage": "https://maxvovchok.github.io/forum/",
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.19",
     "@redux-devtools/extension": "^3.3.0",
     "@reduxjs/toolkit": "^2.2.3",
     "@testing-library/jest-dom": "^5.16.3",
