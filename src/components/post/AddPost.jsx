@@ -10,16 +10,22 @@ export const AddPost = () => {
     setShowForm(true);
   };
 
+  const hideForm = () => {
+    setShowForm(false);
+  };
+
   return (
     <div style={{ marginTop: '20px' }}>
-      <Button
-        variant="contained"
-        onClick={addPost}
-        sx={{ marginBottom: '30px' }}
-      >
-        Додати пост
-      </Button>
-      {showForm && <FormPost />}
+      {!showForm && (
+        <Button
+          variant="contained"
+          onClick={addPost}
+          sx={{ marginBottom: '30px' }}
+        >
+          Add a post
+        </Button>
+      )}
+      {showForm && <FormPost hideForm={hideForm} />}
       <RenderPost />
     </div>
   );

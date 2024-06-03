@@ -16,6 +16,7 @@ export const SearchCategory = () => {
 
   const handleSearchTermChange = e => {
     setSearchTerm(e.target.value);
+    console.log({ category: selectedCategory, searchTerm: e.target.value });
     dispatch(
       filterTopics({ category: selectedCategory, searchTerm: e.target.value })
     );

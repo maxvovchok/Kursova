@@ -5,9 +5,8 @@ import { addPost } from '../../redux/slice/TopicSlice';
 import { useParams } from 'react-router-dom';
 import { TextField, Button, Box } from '@mui/material';
 
-export const FormPost = () => {
+export const FormPost = ({ hideForm }) => {
   const [post, setPost] = useState('');
-  const [showForm, setShowForm] = useState(true);
   const dispatch = useDispatch();
   const { Id } = useParams();
 
@@ -15,14 +14,14 @@ export const FormPost = () => {
     e.preventDefault();
 
     const newPost = {
-      id: nanoid(),
+      Id: nanoid(),
       content: post,
     };
 
     dispatch(addPost({ Id, post: newPost }));
 
     setPost('');
-    setShowForm(false);
+    hideForm();
   };
 
   const handleChange = e => {
@@ -32,30 +31,23 @@ export const FormPost = () => {
 
   return (
     <div>
-      {showForm && (
-        <form onSubmit={handleSubmit}>
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            mb={2}
-          >
-            <TextField
-              type="text"
-              name="post"
-              label="Введіть ваш пост"
-              variant="outlined"
-              onChange={handleChange}
-              value={post}
-              fullWidth
-              sx={{ mr: 2 }}
-            />
-            <Button type="submit" variant="contained" color="primary">
-              Опублікувати
-            </Button>
-          </Box>
-        </form>
-      )}
+      <form onSubmit={handleSubmit}>
+        <Box display="flex" alignItems="center" justifyContent="center" mb={2}>
+          <TextField
+            type="text"
+            name="post"
+            label="Enter your post"
+            variant="outlined"
+            onChange={handleChange}
+            value={post}
+            fullWidth
+            sx={{ mr: 2 }}
+          />
+          <Button type="submit" variant="contained" color="primary">
+            Publish
+          </Button>
+        </Box>
+      </form>
     </div>
   );
 };

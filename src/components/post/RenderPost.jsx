@@ -16,7 +16,7 @@ export const RenderPost = () => {
             All posts
           </Typography>
           <List>
-            {topic.post.map(({ content }, index) => (
+            {topic.post.map(({ content, id }, index) => (
               <ListItem
                 key={index}
                 sx={{

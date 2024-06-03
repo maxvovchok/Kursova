@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Notiflix from 'notiflix';
 import { nanoid } from 'nanoid';
 import {
@@ -14,38 +14,53 @@ import {
   InputLabel,
   Box,
 } from '@mui/material';
-
-import { addTopic } from '../../redux/slice/TopicSlice';
+import { addTopic, updateTopic } from '../../redux/slice/TopicSlice';
 
 export const AddTopic = () => {
+  const location = useLocation();
+  const topicToEdit = location.state?.topic || null;
+
   const [addNameTopic, setAddNameTopic] = useState('');
   const [descriptionTopic, setDescriptionTopic] = useState('');
   const [category, setCategory] = useState('');
 
-  const allTopic = useSelector(state => state.topics.topicsArr);
+  useEffect(() => {
+    if (topicToEdit) {
+      setAddNameTopic(topicToEdit.nameTopic);
+      setDescriptionTopic(topicToEdit.descriptionTopic);
+      setCategory(topicToEdit.category);
+    }
+  }, [topicToEdit]);
+
+  const allTopics = useSelector(state => state.topics.topicsArr);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    const isTopicExists = allTopic.some(
-      topic => topic.nameTopic === addNameTopic
+    const isTopicExists = allTopics.some(
+      topic => topic.nameTopic === addNameTopic && topic.id !== topicToEdit?.id
     );
 
     if (isTopicExists) {
-      Notiflix.Notify.failure('Topic already exists');
+      Notiflix.Notify.failure('The topic already exists');
     } else {
       const newTopic = {
-        id: nanoid(),
+        id: topicToEdit ? topicToEdit.id : nanoid(),
         nameTopic: addNameTopic,
         descriptionTopic,
         category,
-        post: [],
+        post: topicToEdit ? topicToEdit.post : [],
       };
 
-      dispatch(addTopic(newTopic));
-      Notiflix.Notify.success('Topic was successfully added');
+      if (topicToEdit) {
+        dispatch(updateTopic(newTopic));
+        Notiflix.Notify.success('Topic edited successfully');
+      } else {
+        dispatch(addTopic(newTopic));
+        Notiflix.Notify.success('Topic successfully added');
+      }
 
       setAddNameTopic('');
       setDescriptionTopic('');
@@ -79,12 +94,12 @@ export const AddTopic = () => {
   return (
     <Container>
       <Typography variant="h4" component="h2" gutterBottom>
-        Add a new topic
+        {topicToEdit ? 'Edit Topic' : 'Add a New Topic'}
       </Typography>
       <form onSubmit={handleSubmit}>
         <Box display="flex" flexDirection="column" gap={2}>
           <TextField
-            label="Topic name"
+            label="Topic Name"
             name="nameTopic"
             value={addNameTopic}
             onChange={handleChange}
@@ -92,7 +107,7 @@ export const AddTopic = () => {
             required
           />
           <TextField
-            label="Description of the topic"
+            label="Description"
             name="descriptionTopic"
             value={descriptionTopic}
             onChange={handleChange}
@@ -109,10 +124,10 @@ export const AddTopic = () => {
             >
               <MenuItem value="Programming">Programming</MenuItem>
               <MenuItem value="Announcements and news">
-                Announcements and news
+                Announcements and News
               </MenuItem>
               <MenuItem value="General discussions">
-                General discussions
+                General Discussions
               </MenuItem>
               <MenuItem value="Healthy Lifestyle">Healthy Lifestyle</MenuItem>
             </Select>
@@ -123,7 +138,7 @@ export const AddTopic = () => {
             color="primary"
             sx={{ width: '100px' }}
           >
-            Publish
+            {topicToEdit ? 'Save' : 'Publish'}
           </Button>
         </Box>
       </form>

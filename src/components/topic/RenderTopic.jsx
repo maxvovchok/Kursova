@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { deleteTopic } from '../../redux/slice/TopicSlice';
 import {
   Typography,
@@ -9,7 +9,6 @@ import {
   ListItemText,
   List,
   Box,
-  Divider,
 } from '@mui/material';
 
 export const RenderTopic = () => {
@@ -18,9 +17,14 @@ export const RenderTopic = () => {
   const isAdminPage = location.pathname.startsWith('/administrator');
   const isUserPage = location.pathname.startsWith('/user');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleDelete = id => {
     dispatch(deleteTopic(id));
+  };
+
+  const handleEdit = topic => {
+    navigate('/administrator/addtopic', { state: { topic } });
   };
 
   return (
@@ -28,7 +32,7 @@ export const RenderTopic = () => {
       {filteredTopics.length > 0 ? (
         <>
           <Typography variant="h5" gutterBottom>
-            All topics
+            All Topics
           </Typography>
           <List>
             {filteredTopics.map(
@@ -69,24 +73,41 @@ export const RenderTopic = () => {
                       </Link>
                     </ListItemText>
                     {isAdminPage && (
-                      <Button
-                        onClick={() => handleDelete(id)}
-                        variant="outlined"
-                        color="error"
-                        sx={{ height: '100%' }}
-                      >
-                        Delete
-                      </Button>
+                      <>
+                        <Button
+                          onClick={() =>
+                            handleEdit({
+                              id,
+                              nameTopic,
+                              descriptionTopic,
+                              category,
+                            })
+                          }
+                          variant="outlined"
+                          color="primary"
+                          sx={{ height: '100%', marginRight: '8px' }}
+                        >
+                          Edit
+                        </Button>
+
+                        <Button
+                          onClick={() => handleDelete(id)}
+                          variant="outlined"
+                          color="error"
+                          sx={{ height: '100%' }}
+                        >
+                          Delete
+                        </Button>
+                      </>
                     )}
                   </ListItem>
-                  <Divider />
                 </Box>
               )
             )}
           </List>
         </>
       ) : (
-        <Typography variant="h6">There is no topics</Typography>
+        <Typography variant="h6">There are no topics</Typography>
       )}
     </Box>
   );

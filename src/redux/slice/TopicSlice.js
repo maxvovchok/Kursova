@@ -7,13 +7,28 @@ const initialState = {
 
 export const getTopic = createAction('get');
 export const addTopic = createAction('add');
+export const updateTopic = createAction('update');
 export const addPost = createAction('addPost');
 export const filterTopics = createAction('filter');
 export const deleteTopic = createAction('deleteTopic');
+export const deletePost = createAction('deletePost');
 
 export const topicReducer = createReducer(initialState, builder => {
   builder.addCase(addTopic, (state, action) => {
     state.topicsArr.push(action.payload);
+    state.filteredTopics = state.topicsArr;
+  });
+  builder.addCase(updateTopic, (state, action) => {
+    const index = state.topicsArr.findIndex(
+      topic => topic.id === action.payload.id
+    );
+    if (index !== -1) {
+      state.topicsArr[index] = {
+        ...state.topicsArr[index],
+        ...action.payload,
+        post: state.topicsArr[index].post,
+      };
+    }
     state.filteredTopics = state.topicsArr;
   });
   builder.addCase(addPost, (state, action) => {
