@@ -18,7 +18,7 @@ export const LogIn = () => {
     } else if (isUser) {
       window.location.href = 'user';
     } else {
-      setMessage('Неправильний email або пароль');
+      setMessage('Invalid email or password');
     }
   };
 
@@ -33,10 +33,10 @@ export const LogIn = () => {
       }}
     >
       <Typography variant="h4" gutterBottom>
-        Увійти
+        Log In
       </Typography>
       <TextField
-        label="Електронна пошта"
+        label="Email"
         type="email"
         value={email}
         onChange={e => setEmail(e.target.value)}
@@ -45,7 +45,7 @@ export const LogIn = () => {
         margin="normal"
       />
       <TextField
-        label="Пароль"
+        label="Password"
         type="password"
         value={password}
         onChange={e => setPassword(e.target.value)}
@@ -54,7 +54,7 @@ export const LogIn = () => {
         margin="normal"
       />
       <Button variant="contained" onClick={handleLogin} fullWidth>
-        УВІЙТИ
+        LOG IN
       </Button>
       <Typography color="error" variant="body1" gutterBottom>
         {message}

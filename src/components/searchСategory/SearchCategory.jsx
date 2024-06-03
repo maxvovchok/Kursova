@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterTopics } from '../../redux/store/store';
-import { Typography, Select, MenuItem, TextField, Box } from '@mui/material'; 
+import { Typography, Select, MenuItem, TextField, Box } from '@mui/material';
 
 export const SearchCategory = () => {
-  const [selectedCategory, setSelectedCategory] = useState(''); 
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export const SearchCategory = () => {
 
   return (
     <Box>
-      <Typography>Обрати за категоріями</Typography>
+      <Typography>Choose by categories</Typography>
       <Select
         value={selectedCategory}
         onChange={handleCategoryChange}
@@ -37,7 +37,7 @@ export const SearchCategory = () => {
         <MenuItem value="General discussions">General discussions</MenuItem>
         <MenuItem value="Healthy Lifestyle">Healthy Lifestyle</MenuItem>
       </Select>
-      <Typography>Пошук</Typography>
+      <Typography>Search</Typography>
       <TextField
         multiline
         rows={4}

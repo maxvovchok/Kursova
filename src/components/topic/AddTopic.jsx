@@ -79,12 +79,12 @@ export const AddTopic = () => {
   return (
     <Container>
       <Typography variant="h4" component="h2" gutterBottom>
-        Додати нову тему
+        Add a new topic
       </Typography>
       <form onSubmit={handleSubmit}>
         <Box display="flex" flexDirection="column" gap={2}>
           <TextField
-            label="Назва теми"
+            label="Topic name"
             name="nameTopic"
             value={addNameTopic}
             onChange={handleChange}
@@ -92,7 +92,7 @@ export const AddTopic = () => {
             required
           />
           <TextField
-            label="Опис теми"
+            label="Description of the topic"
             name="descriptionTopic"
             value={descriptionTopic}
             onChange={handleChange}
