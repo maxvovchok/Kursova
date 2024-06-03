@@ -15,7 +15,7 @@ import {
   Box,
 } from '@mui/material';
 
-import { addTopic } from '../../redux/store/store';
+import { addTopic } from '../../redux/slice/TopicSlice';
 
 export const AddTopic = () => {
   const [addNameTopic, setAddNameTopic] = useState('');

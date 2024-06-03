@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { deleteTopic } from '../../redux/store/store';
+import { deleteTopic } from '../../redux/slice/TopicSlice';
 import {
   Typography,
   Button,

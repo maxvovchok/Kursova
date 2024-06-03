@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { filterTopics } from '../../redux/store/store';
+import { filterTopics } from '../../redux/slice/TopicSlice';
 import { Typography, Select, MenuItem, TextField, Box } from '@mui/material';
 
 export const SearchCategory = () => {
